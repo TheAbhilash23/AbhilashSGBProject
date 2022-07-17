@@ -1,0 +1,56 @@
+from rest_framework import serializers
+from SGBproject.models import Odb
+
+class OdbSerializer(serializers.Serializer):
+    custid = serializers.IntegerField()
+    credit_risk = serializers.IntegerField()
+    status = serializers.IntegerField()
+    duration = serializers.IntegerField()
+    credit_history = serializers.IntegerField()
+    purpose = serializers.IntegerField()
+    amount = serializers.IntegerField()
+    savings = serializers.IntegerField()
+    employment_duration = serializers.IntegerField()
+    installment_rate = serializers.IntegerField()
+    personal_status_sex = serializers.IntegerField()
+    other_debtors = serializers.IntegerField()
+    present_residence = serializers.IntegerField()
+    property_type = serializers.IntegerField()
+    age = serializers.IntegerField()
+    other_installment_plans = serializers.IntegerField()
+    housing = serializers.IntegerField()
+    number_credits = serializers.IntegerField()
+    job = serializers.IntegerField()
+    people_liable = serializers.IntegerField()
+    telephone = serializers.IntegerField()
+    foreign_worker = serializers.IntegerField()
+    
+    def create( self, validate_data):
+        return Odb.objects.create(**validate_data)
+    
+    def update( self, instance,validated_data):
+        instance.custid = validated_data.get('custid', instance.custid)
+        instance.credit_risk = validated_data.get('credit_risk',instance.credit_risk)
+        instance.status = validated_data.get('status', instance.status)
+        instance.duration = validated_data.get('duration', instance.duration)
+        instance.credit_history = validated_data.get('credit_history',instance.credit_history)
+        instance.purpose = validated_data.get('purpose', instance.purpose)
+        instance.amount = validated_data.get('amount', instance.amount)
+        instance.savings = validated_data.get('savings', instance.savings)
+        instance.employment_duration = validated_data.get('employment_duration', instance.employment_duration)
+        instance.installment_rate = validated_data.get('installment_rate', instance.installment_rate)
+        instance.personal_status_sex = validated_data.get('personal_status_sex', instance.personal_status_sex)
+        instance.other_debtors = validated_data.get('other_debtors', instance.other_debtors)
+        instance.present_residence = validated_data.get('present_residence', instance.present_residence)
+        instance.property_type = validated_data.get('property_type', instance.property_type)
+        instance.age = validated_data.get('age', instance.age)
+        instance.other_installment_plans = validated_data.get('other_installment_plans', instance.other_installment_plans)
+        instance.housing = validated_data.get('housing', instance.housing)
+        instance.number_credits = validated_data.get('number_credits', instance.number_credits)
+        instance.job = validated_data.get('job', instance.job)
+        instance.people_liable = validated_data.get('people_liable', instance.people_liable)
+        instance.telephone = validated_data.get('telephone', instance.telephone)
+        instance.foreign_worker = validated_data.get('foreign_worker', instance.foreign_worker)
+        
+        instance.save()
+        return instance
