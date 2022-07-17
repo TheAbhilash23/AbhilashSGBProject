@@ -1,6 +1,6 @@
 <h1>AbhilashSGBProject</h1>
 
-This repository contains a project on "Prediction of customer credit risk of South German Bank" whose problem statement and requirement was shared by iNeuron.ai .
+This repository contains a project on <b>"Prediction of customer credit risk of South German Bank"</b> whose problem statement and requirement was shared by iNeuron.ai .
 
 I have used PYTHON, HTML, CSS for webdevelopment, AI and ML modelling and Django and Django Rest Framework to carry out the tasks.
 
