@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.views.generic.base import TemplateView, RedirectView
-
+from django.views.decorators.csrf import csrf_protect
 
 
 
@@ -23,7 +23,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-
+@csrf_protect
 def customer_enquiry(request):
     if request.method == 'GET':
         fm = entryform.customer_enquiry()
@@ -66,7 +66,7 @@ def customer_enquiry(request):
             print("The data is invalid???")
             return render(request, 'crudding/personalinformation.html',{'pform':fm})
         
-
+@csrf_protect
 class AuthenticationView(View):
     
     def get(self, request):
@@ -98,7 +98,7 @@ class AuthenticationView(View):
 # def directtoanalyser(request):
 #     if request.method == "POST":
         
-    
+@csrf_protect    
 class ApplicationSelector(AuthenticationView):
     
     def get(self,request):
@@ -120,7 +120,7 @@ class ApplicationSelector(AuthenticationView):
 
 
          
-            
+@csrf_protect            
 class Analyser(AuthenticationView):
     
     
@@ -179,7 +179,9 @@ class Analyser(AuthenticationView):
         self.prediction = LR.predict(X_predict)
         
         return render(request, 'crudding/result.html',{'form':self.form,'vars':self.vars,'result':self.prediction})
-    
+
+
+@csrf_protect    
 class CrudOperations(AuthenticationView):
     
     form = entryform.editform()
