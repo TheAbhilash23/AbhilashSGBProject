@@ -30,7 +30,7 @@ class customer_enquiry(forms.Form):
     name                = forms.CharField(required=True,initial='Abhilash', label = "Name ")
     telephone           = forms.CharField(required = True, widget=forms.NumberInput(),initial='0123456789', label = "Telephone No. ")
     email               = forms.CharField(required = True, widget=forms.EmailInput, initial= "Abhilash@xact.com", label = "Email Address ")
-    socialmedia         = forms.CharField(widget=forms.URLInput, initial="https://www.linkedin.com/feed/", label = "Social Media Profile Link ")
+    socialmedia         = forms.CharField(widget=forms.URLInput, initial="https://www.linkedin.com/in/abhilash23/", label = "Social Media Profile Link ")
     formal_education    = forms.CharField(required=False, label = "Highest Education ")
 
     

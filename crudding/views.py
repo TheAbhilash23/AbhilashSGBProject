@@ -196,11 +196,7 @@ class CrudOperations(AuthenticationView):
     def post(self, request):
 
         print(request.POST)
-        
-                  
-        
        
-            
         return render(request,'crudding/crudoperations.html',{'form':self.form,'vars':self.var,'nform':self.nform})
     
 
