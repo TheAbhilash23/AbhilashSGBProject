@@ -66,14 +66,16 @@ def customer_enquiry(request):
             print("The data is invalid???")
             return render(request, 'crudding/personalinformation.html',{'pform':fm})
         
-@csrf_protect
+
 class AuthenticationView(View):
     
     def get(self, request):
         self.fm = AuthenticationForm()
         
         return render(request, 'classlogin.html', {'form': self.fm})
-
+    
+    
+    @csrf_protect
     def post(self, request):
         self.fm = AuthenticationForm(request=request, data=request.POST)
         
@@ -98,7 +100,7 @@ class AuthenticationView(View):
 # def directtoanalyser(request):
 #     if request.method == "POST":
         
-@csrf_protect    
+   
 class ApplicationSelector(AuthenticationView):
     
     def get(self,request):
@@ -107,6 +109,7 @@ class ApplicationSelector(AuthenticationView):
         
         return render(request, 'firstpage_profile.html', {'form':fm, 'var': unameglobal,'sy':sy})
 
+    @csrf_protect
     def post(self, request):
         
         sy = entryform.application_selector(data=request.POST)
@@ -120,7 +123,7 @@ class ApplicationSelector(AuthenticationView):
 
 
          
-@csrf_protect            
+          
 class Analyser(AuthenticationView):
     
     
@@ -130,6 +133,8 @@ class Analyser(AuthenticationView):
         self.form = entryform.addnewform(auto_id='form_%s')
         return render(request, 'crudding/analyser.html',{'form':self.form})
     
+    
+    @csrf_protect
     def post(self, request):
         
         self.form = entryform.addnewform( data = request.POST)
@@ -181,7 +186,7 @@ class Analyser(AuthenticationView):
         return render(request, 'crudding/result.html',{'form':self.form,'vars':self.vars,'result':self.prediction})
 
 
-@csrf_protect    
+   
 class CrudOperations(AuthenticationView):
     
     form = entryform.editform()
@@ -195,6 +200,8 @@ class CrudOperations(AuthenticationView):
         print(request)
         return render(request,'crudding/crudoperations.html',{'form':self.form,'vars':self.var,'nform':self.nform,'delform':self.delform})
     
+    
+    @csrf_protect
     def post(self, request):
 
         print(request.POST)
