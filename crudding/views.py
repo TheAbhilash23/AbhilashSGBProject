@@ -75,7 +75,7 @@ class AuthenticationView(View):
         return render(request, 'classlogin.html', {'form': self.fm})
     
     
-    @csrf_protect
+    
     def post(self, request):
         self.fm = AuthenticationForm(request=request, data=request.POST)
         
@@ -109,7 +109,7 @@ class ApplicationSelector(AuthenticationView):
         
         return render(request, 'firstpage_profile.html', {'form':fm, 'var': unameglobal,'sy':sy})
 
-    @csrf_protect
+    
     def post(self, request):
         
         sy = entryform.application_selector(data=request.POST)
@@ -134,7 +134,7 @@ class Analyser(AuthenticationView):
         return render(request, 'crudding/analyser.html',{'form':self.form})
     
     
-    @csrf_protect
+    
     def post(self, request):
         
         self.form = entryform.addnewform( data = request.POST)
