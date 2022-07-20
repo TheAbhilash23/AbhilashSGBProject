@@ -1,9 +1,7 @@
 from django.db import models
 
 class Odb(models.Model):
-    custid = models.AutoField(primary_key=True,
-                              serialize=False,
-                              verbose_name='ID')
+    custid = models.AutoField(primary_key=True, serialize=False, verbose_name='ID')
     credit_risk = models.IntegerField()
     status = models.IntegerField()
     duration = models.IntegerField()

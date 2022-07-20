@@ -130,14 +130,14 @@ class Analyser(AuthenticationView):
     def get(self, request):
         
 
-        self.form = entryform.addnewform(auto_id='form_%s')
+        self.form = entryform.analyser_dropdown(auto_id='form_%s')
         return render(request, 'crudding/analyser.html',{'form':self.form})
     
     
     
     def post(self, request):
         
-        self.form = entryform.addnewform( data = request.POST)
+        self.form = entryform.analyser_dropdown( data = request.POST)
         
         self.vars = Odb.objects.values()
         print("The vars are: ", self.vars)

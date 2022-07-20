@@ -4,11 +4,8 @@ from django.db import models
 
 
 
-
 class CustEnquiry(models.Model):
-    custid = models.AutoField(primary_key=True,
-                                serialize=False,
-                                verbose_name='ID')
+    custid = models.AutoField(primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=25)
     telephone = models.CharField( max_length=10)
     email = models.EmailField(max_length=50)
