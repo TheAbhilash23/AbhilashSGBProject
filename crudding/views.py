@@ -181,7 +181,24 @@ class Analyser(AuthenticationView):
         print("Xtrain:\n",X_train.head(),"\nYtrain\n",Y_train)
         #Carrying out LogisticRegression on training dataset
         LR = LogisticRegression(random_state=0,solver='liblinear').fit(X_train, Y_train)
+        
+        #Predicting the credit risk (dependent variable) using the data from the FORM (analyser_dropdown)
         self.prediction = LR.predict(X_predict)
+        
+        #For evaluation and testing we need to find Y_predicted
+        self.Y_predicted = LR.predict(X_test)
+        
+        #Now we need to calculate confusion matrix
+        #Importing Libraries for confusion matrix
+        from sklearn.metrics import confusion_matrix
+        print('\n\n\n\n\n Confusion Matrix\n\n\n',confusion_matrix(Y_test,self.Y_predicted))
+        self.confusion_matrix = confusion_matrix(Y_test,self.Y_predicted)
+        
+        #Importing seaborn library for visualizing
+        from seaborn import heatmap as sns
+        #Building confusion matrix as heatmap
+        plot = sns(self.confusion_matrix/np.sum(self.confusion_matrix), annot=True, fmt='.2%', cmap='Blues')
+        
         
         return render(request, 'crudding/result.html',{'form':self.form,'vars':self.vars,'result':self.prediction})
 
