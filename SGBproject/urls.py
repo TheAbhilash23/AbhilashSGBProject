@@ -26,6 +26,6 @@ urlpatterns = [
     path('signup/',views.employee_signup, name = 'signup'),
     path('Home/', views.RedirectView.as_view(url='/'), name = 'redirecthome'),
     path('home/', views.RedirectView.as_view(url='/'), ),
-    path('progress/',views.progress, name = 'progress'),
-    path('index/', views.index, name = 'index'),
+    # path('progress/',views.progress, name = 'progress'),
+    # path('index/', views.index, name = 'index'),
 ]

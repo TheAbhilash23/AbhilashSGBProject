@@ -16,8 +16,8 @@ def welcome(request):
     return render(request, 'welcome login.html')
 
 
-def index(request):
-    return render(request, 'index.html')
+# def index(request):
+#     return render(request, 'index.html')
 
 
 #If the user (Employee) asks to signup
@@ -32,8 +32,8 @@ def employee_signup(request):
         
     return render(request, 'signup.html', {'form':fm})
 
-def progress(request):
-    return render(request, 'progress.html ')
+# def progress(request):
+#     return render(request, 'progress.html ')
 
 
 
