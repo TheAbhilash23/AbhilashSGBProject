@@ -20,7 +20,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crudding/', include('crudding.urls')),
-    path('analyser/', include('analyser.urls')),
     path('api/',include('apionly.urls')),
     path('', views.welcome, name='homepage'),
     path('signup/',views.employee_signup, name = 'signup'),
