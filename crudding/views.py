@@ -90,8 +90,7 @@ class AuthenticationView(View):
                 login(request, user)
                 global authreq, fm, unameglobal
                 authreq,fm,unameglobal = request,self.fm,self.var
-                fm = self.fm
-                unameglobal = self.var
+
                 # render(request, 'firstpage_profile.html',{'form': fm, 'var': unameglobal})
 
                 return HttpResponseRedirect('firstpage_login/')
@@ -195,9 +194,9 @@ class Analyser(AuthenticationView):
         self.confusion_matrix = confusion_matrix(Y_test,self.Y_predicted)
         
         #Importing seaborn library for visualizing
-        from seaborn import heatmap as sns
-        #Building confusion matrix as heatmap
-        plot = sns(self.confusion_matrix/np.sum(self.confusion_matrix), annot=True, fmt='.2%', cmap='Blues')
+        # from seaborn import heatmap as sns
+        # #Building confusion matrix as heatmap
+        # plot = sns(self.confusion_matrix/np.sum(self.confusion_matrix), annot=True, fmt='.2%', cmap='Blues')
         
         
         return render(request, 'crudding/result.html',{'form':self.form,'vars':self.vars,'result':self.prediction})
